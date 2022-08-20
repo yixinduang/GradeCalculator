@@ -1,0 +1,128 @@
+
+:root {
+    --primary: #FF842B;
+    --primary-lighter: #fbb3b0;
+    --primary-light: #FFE4D0;
+    --secondary: #FFC32B;
+}
+
+.component-title {
+    margin: 0;
+    align-self: center;
+    overflow-y: auto;
+    height:60px;
+    
+}
+
+.component-subtitle {
+    align-self: flex-end;
+}
+
+.component-percentage {
+    background-color: white;
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    border-radius: 0.5em;
+}
+
+.item-list {
+    padding: 0.5em 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item-container {
+    box-sizing: border-box;
+    background-color: var(--primary-lighter);
+    width: 100%;
+    height: 45px;
+    padding: 0 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.3em;
+    color: BLACK;
+    font-weight: bold;
+    text-shadow: 1px 2px 1px rgba(117, 49, 0, 0.55);
+    box-shadow: inset -2px -3px 5px #fda079;;
+}
+
+.item-container:hover {
+    cursor: pointer;
+}
+
+.item-container:hover::after {
+    content: url("./delete.svg");
+}
+
+.item-container + .item-container {
+    margin-top: 0.5em;
+}
+
+.item-container span {
+    display: inline-block;
+}
+
+.item-percentage {
+    background-color: var(--primary-light);
+    padding: 0.2em 0.5em;
+    border-radius: 0.5em;
+    margin-right: 0.2em;
+}
+
+.item-name {
+    margin-right: auto;
+}
+
+.add-item-button-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-grow: 1;
+    
+}
+
+.add-item-button {
+    padding: 0.5em 1em;
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 0.2em;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 2px 1px rgba(117, 49, 0, 0.55);
+    box-shadow: inset -2px -3px 5px #e0ab2a;;
+    transition: all 0.2s ease-in;
+}
+
+.add-item-button:hover {
+    box-shadow: inset -2px -3px 7px 2px #2ae0a0;
+    background-color:aquamarine;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #FF2B2B;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.section-one-container {
+    width: min(90%, 1100px);
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.container {
+    /*width: min(90%, 1100px);*/
+    height: 100vh;
+    margin: 0 auto;
+}
+
