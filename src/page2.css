@@ -1,3 +1,44 @@
+
+#nextButton{
+
+    clip-path: polygon(
+        0 0,
+        30px 50%,
+        0 100%,
+        calc(100% - 30px) 100%,
+        1000% 50%,
+        calc(100% - 30px) 0
+    );
+    margin: 0 auto;
+    background-color: rgb(100, 100, 205);
+    width: 150px;
+    height: 60px;
+    padding: 0 1em;
+    color:azure;
+    font-size: 20px;
+    position: fixed;
+    top:80%;
+    right:0px;
+    box-shadow: inset 2px -3px 5px #1e27d7;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    border: none;
+
+}
+
+#nextButton:hover{
+
+    
+    margin: 0 auto;
+    background-color: rgba(213, 82, 183, 0.836);
+    
+    box-shadow: inset -2px -3px 5px #b10096;
+    
+
+}
+
+
+
 .section {
     /*width: min(90%, 1100px);*/
     height: 100vh;
@@ -10,6 +51,7 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    margin: 0px;
 }
 
 .component + .component {
@@ -18,7 +60,7 @@
 
 .component {
     background-color: #f4ede7;
-    margin-left: 5em;
+    margin-left: 1em;
     margin-bottom: 1em;
     padding: 1em 0.5em;
     flex-basis: 70px;
@@ -27,8 +69,13 @@
     border-radius: 0.5em;
     box-shadow: 3px 8px 4px grey;
     height: 450px;
+    min-width: 150px;
+    max-width: 250px;
     position: relative;
     top:40px;
+    overflow: auto;
+    overflow-x: hidden;
+    
 }
 
 #add-column {

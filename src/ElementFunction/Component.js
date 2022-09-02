@@ -22,19 +22,23 @@ const SetComponent =(props)=>{
 
     const HandleClick=(item)=>{
 
-        console.log(item);
-
-
-        let found=gradingComp.find(obj=>{return obj.name===item});
-
-        found.number++;
-        console.log(found);
-        setGradingComp(gradingComp);
+        setGradingComp(prevComps=>prevComps.map(comp=>{
+            if (comp.name !== item) return comp;
+            return{...comp,number: Number(comp.number)+1}
+        }));
         console.log(gradingComp);
 
         
     }
     
+    const ColseContainer=(item)=>{
+
+        setGradingComp(prevComps=>prevComps.filter(comp=>{
+            return comp.name!==item ;
+            
+        }))
+        console.log("closed")
+    }
    
 
     console.log("here is setcomp")
@@ -43,7 +47,7 @@ const SetComponent =(props)=>{
         <div class="component" key={props.name}>
 
 
-            <span class="close">x</span>
+            <span class="close" onClick={()=>ColseContainer(props.name)}>&times;</span>
             <div >
                 <h1 class="component-title">{props.name}</h1>
                 <div class="component-subtitle">

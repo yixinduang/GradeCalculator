@@ -3,7 +3,7 @@ import './App.css';
 import React from "react";
 import Page1 from "./page1";
 import Page2 from "./page2";
-
+import FinalTable from "./FinalTable"
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
 
           
           <Route path="/page2" element={<Page2/>}/>
+          <Route path="/FinalTable" element={<FinalTable/>}/>
           
         </Routes>
       </BrowserRouter>

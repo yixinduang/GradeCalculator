@@ -76,12 +76,13 @@
 }
 
 .add-item-button-container {
-    position: absolute;
-    bottom: 20px;
+    position: sticky;
+    bottom: 0px;
     right: 20px;
     display: flex;
     flex-grow: 1;
-    
+    justify-content: right;
+    padding: 0.5em 1em;
 }
 
 .add-item-button {
@@ -105,8 +106,8 @@
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 0px;
+    right: 10px;
     color: #FF2B2B;
     font-size: 1.5em;
     font-weight: bold;
