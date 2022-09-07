@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import page2 from './page2';
 import { FinalGradeProvider } from './ElementFunction/Contexts/finalContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

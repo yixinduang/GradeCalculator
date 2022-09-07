@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Component from "./ElementFunction/Component";
-import Nav from './NavBar';
+import Component from "../ElementFunction/Component";
+import Nav from '../NavBar';
 import './page2.css'
-import { Modal } from "./ElementFunction/AddComponents/Modal";
-import { useFinalContext } from "./ElementFunction/Contexts/finalContext";
+import { Modal } from "../ElementFunction/AddComponents/Modal";
+import { useFinalContext } from "../ElementFunction/Contexts/finalContext";
 import { useState } from "react";
 const Page2 = (props) => {
 
@@ -24,7 +24,7 @@ const Page2 = (props) => {
     return (
         <div>
 
-            <Nav />
+            <Nav np={"Please enter the percentages as stated in the syllabus"}/>
             <section class="section">
                 <div class="section-one-container">
 

@@ -1,9 +1,9 @@
 import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom';
 import './App.css';
 import React from "react";
-import Page1 from "./page1";
-import Page2 from "./page2";
-import FinalTable from "./FinalTable"
+import Page1 from "./pages/page1";
+import Page2 from "./pages/page2";
+import FinalTable from "./pages/FinalTable"
 
 function App() {
 

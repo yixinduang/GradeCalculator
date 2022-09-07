@@ -1,7 +1,7 @@
 import './NavBar.css';
 import React from 'react';
 
-export default function Nav() {
+export default function Nav(props) {
 
     return (
         <div>
@@ -15,7 +15,8 @@ export default function Nav() {
 
             </div>
             <div class="instruction">
-                <p>Please enter the percentages as stated in the syllabus</p>
+                <p>{props.np}</p>
+                
             </div>
 
         </div>
