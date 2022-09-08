@@ -3,6 +3,8 @@ import './App.css';
 import React from "react";
 import Page1 from "./pages/page1";
 import Page2 from "./pages/page2";
+import Page22 from "./pages2/page2";
+import Page3 from "./pages2/page3";
 import FinalTable from "./pages/FinalTable"
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           
           <Route path="/page2" element={<Page2/>}/>
           <Route path="/FinalTable" element={<FinalTable/>}/>
+          <Route path="/page22" element={<Page22/>}/>
+          <Route path="/page3" element={<Page3/>}/>
           
         </Routes>
       </BrowserRouter>

@@ -7,6 +7,9 @@ const Page1=(props)=>{
     navigate('/page2');
   };
 
+  const navigatePage22 = () => {
+    navigate('/page22');
+  };
 
   return (
     <div className="App">
@@ -43,7 +46,7 @@ const Page1=(props)=>{
               </p1>
             </div>
             <img class="aci" src="./acc2.png" />
-            <botton onClick={navigatePage2}>select</botton>
+            <botton onClick={navigatePage22}>select</botton>
         </section>
 
       </div>

@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 .container{
     align-items: center;
+    
 }
 
 th,td {
     border:1px solid;
     border-collapse: collapse;
-    border-color: #f70dad;
+    border-color: #fefcfe;
 }
 table {
     text-align: center;
@@ -19,10 +20,11 @@ table {
     font-family: Arial; font-size: 10pt;
     text-shadow: 0.5px 0.5px 0.5px rgb(117 49 0 / 55%);
     box-shadow: inset -2px -3px 5px    #ff8c8c;
-    ;
+    color:rgb(179, 3, 3);
+    
   }
   #header{
-    background-color:#ccf6ea;
+    background-color:#f9fcfb;
 
   }
 
@@ -31,11 +33,11 @@ table {
   }
 
   #firstBody{
-    background-color: #fcf5bf;
+    background-color: #fcfcfa;
   }
 
   #firstHeader{
-    background-color: #fcbf86;
+    background-color: #fbf9f7;
   }
 
   #total{
@@ -44,3 +46,5 @@ table {
     font-family: 'Indie Flower', cursive;
     font-size: 5vmax
   }
+
+  
