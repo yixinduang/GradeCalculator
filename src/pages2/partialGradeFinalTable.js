@@ -1,7 +1,7 @@
 import Nav from "../NavBar";
 import { useFinalContext } from "../ElementFunction/Contexts/finalContext";
 import "../pages/table.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelectionContext } from "../ElementFunction/Contexts/selectionContext";
 
 const PartialGradeFinalTable = () => {
@@ -25,7 +25,7 @@ const PartialGradeFinalTable = () => {
       for (let i = 1; i <= g.number; i++) {
         const component = {
           cname: g.name + i,
-          cpercenatge: Number(g.percentage),
+          cpercentage: Number(g.percentage),
           score: 0,
         };
         componentList.push(component);
@@ -36,39 +36,57 @@ const PartialGradeFinalTable = () => {
   React.useEffect(() => {
     for (let i = 0; i < componentList.length; i++) {
       if (componentList[i].cname === selected) {
-        setPercentage(componentList[i].cpercenatge);
+        setPercentage(componentList[i].cpercentage);
       }
     }
     console.log("percentage:" + selectedPercentage);
-
-    console.log(componentList);
   }, [selectedPercentage]);
 
   /////////////////////////////
 
-  // setList((componentList) =>
-  //   componentList.filter((component) => {
-  //     return component.cname !== selected;
-  //   })
-  // );
+  React.useEffect(() => {
+    (async () => {
+      setList((componentList) =>
+        componentList.filter((component) => {
+          return component.cname !== selected;
+        })
+      );
+    })();
+  }, []);
+
+  console.log("below is componentList:");
+  console.log(componentList);
 
   /////////////////
 
-  function handleChange(event) {
+  function HandleChange(event) {
     componentList.map((c) => {
-      if (c.cname == event.target.name) {
+      if (c.cname === event.target.name) {
         c.score = Number(event.target.value);
       }
     });
 
-    if (event.target.name === "total") {
-      setTotalScore(Number(event.target.value));
-      console.log(total);
-    }
-
     //get the sum
 
-    const gradelist = componentList.map((c) => (c.score * c.cpercenatge) / 100);
+    sumUP();
+  }
+
+  function HandleChangeTotal(event) {
+    console.log("event value" + event.target.value);
+
+    if (event.target.name === "total") {
+      setTotalScore(Number(event.target.value));
+    }
+  }
+
+  React.useEffect(() => {
+    sumUP();
+  }, [total]);
+
+  /////////////////////////////////////////////
+
+  function sumUP() {
+    const gradelist = componentList.map((c) => (c.score * c.cpercentage) / 100);
 
     let sum = gradelist.reduce((acc, comp) => {
       console.log(comp);
@@ -78,41 +96,31 @@ const PartialGradeFinalTable = () => {
 
     console.log("sum" + sum);
     console.log(selectedPercentage);
+    console.log(total);
 
     setPartialScore(
       (((total - sum) * 100) / Number(selectedPercentage)).toFixed(2)
     );
   }
 
+  //////////////////////////////////////////
+
   const getSelection = (item) => {
-    let sectionList = [];
-
-    for (let i = 1; i <= item.number; i++) {
-      let n = item.name;
-      sectionList.push(
-        <tr id="body">
-          <th id="firstBody">{n.charAt(0) + i}</th>
-          <th>{item.percentage + "%"}</th>
-          <th>
-            <input type="number" name={n + i} onChange={handleChange} />%{" "}
-          </th>
-        </tr>
-      );
-    }
-
+    console.log(item.cname);
     return (
       <>
-        <tr id="header">
-          <th id="firstHeader">{item.name}</th>
-          <th>total:{item.number * item.percentage + "%"}</th>
-          <th>score </th>
+        <tr id="body">
+          <th id="firstBody">{item.cname}</th>
+          <th>{item.cpercentage + "%"}</th>
+          <th>
+            <input type="number" name={item.cname} onChange={HandleChange} />%{" "}
+          </th>
         </tr>
-        <>{sectionList}</>
       </>
     );
   };
 
-  const sectionContent = gradingComp.map((comp) => getSelection(comp));
+  const sectionContent = componentList.map((comp) => getSelection(comp));
 
   return (
     <>
@@ -124,6 +132,12 @@ const PartialGradeFinalTable = () => {
 
       <div id="paper">
         <table>
+          <tr id="header">
+            <th id="firstHeader">Name</th>
+            <th>percentage</th>
+            <th>score </th>
+          </tr>
+
           <>{sectionContent}</>
           <tr id="header">
             <th id="firstHeader">TotalScore</th>
@@ -134,7 +148,7 @@ const PartialGradeFinalTable = () => {
             <th id="firstBody">Total</th>
             <th>100%</th>
             <th>
-              <input type="number" name="total" onChange={handleChange} />%{" "}
+              <input type="number" name="total" onChange={HandleChangeTotal} />%{" "}
             </th>
           </tr>
         </table>
