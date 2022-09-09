@@ -14,8 +14,8 @@ const Page3 = (props) => {
   const Context1 = useFinalContext().gradingComp;
 
   const navigate = useNavigate();
-  const navigatePage3 = () => {
-    navigate("/page3");
+  const navigatePartialGradeFinalTable = () => {
+    navigate("/PartialGradeFinalTable");
   };
 
   return (
@@ -27,7 +27,7 @@ const Page3 = (props) => {
         <div class="section-one-container">
           <P3Component c={Context1} />
 
-          <button id="nextButton" onClick={navigatePage3}>
+          <button id="nextButton" onClick={navigatePartialGradeFinalTable}>
             Next
           </button>
         </div>

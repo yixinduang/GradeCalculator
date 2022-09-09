@@ -1,14 +1,20 @@
 import Nav from "../NavBar";
 import { useFinalContext } from "../ElementFunction/Contexts/finalContext";
-import "./table.css";
+import "../pages/table.css";
 import React from "react";
+import { useSelectionContext } from "../ElementFunction/Contexts/selectionContext";
 
-const FinalTable = () => {
+const PartialGradeFinalTable = () => {
   const { gradingComp, setGradingComp } = useFinalContext();
+  const { selected, setSlection } = useSelectionContext();
 
-  const [totalScore, setTotalScore] = React.useState(0);
+  const [partialScore, setPartialScore] = React.useState(100);
 
   const [componentList, setList] = React.useState([]);
+
+  const [selectedPercentage, setPercentage] = React.useState(0);
+
+  const [total, setTotalScore] = React.useState(100);
 
   //loop for creating componentList
 
@@ -27,6 +33,25 @@ const FinalTable = () => {
     }
   }, []);
 
+  React.useEffect(() => {
+    for (let i = 0; i < componentList.length; i++) {
+      if (componentList[i].cname === selected) {
+        setPercentage(componentList[i].cpercenatge);
+      }
+    }
+    console.log("percentage:" + selectedPercentage);
+
+    console.log(componentList);
+  }, [selectedPercentage]);
+
+  /////////////////////////////
+
+  // setList((componentList) =>
+  //   componentList.filter((component) => {
+  //     return component.cname !== selected;
+  //   })
+  // );
+
   /////////////////
 
   function handleChange(event) {
@@ -36,7 +61,10 @@ const FinalTable = () => {
       }
     });
 
-    console.log(componentList);
+    if (event.target.name === "total") {
+      setTotalScore(Number(event.target.value));
+      console.log(total);
+    }
 
     //get the sum
 
@@ -48,7 +76,12 @@ const FinalTable = () => {
       return acc + comp;
     }, 0);
 
-    setTotalScore(sum.toFixed(2));
+    console.log("sum" + sum);
+    console.log(selectedPercentage);
+
+    setPartialScore(
+      (((total - sum) * 100) / Number(selectedPercentage)).toFixed(2)
+    );
   }
 
   const getSelection = (item) => {
@@ -92,12 +125,24 @@ const FinalTable = () => {
       <div id="paper">
         <table>
           <>{sectionContent}</>
+          <tr id="header">
+            <th id="firstHeader">TotalScore</th>
+            <th>total:100%</th>
+            <th>score </th>
+          </tr>
+          <tr id="body">
+            <th id="firstBody">Total</th>
+            <th>100%</th>
+            <th>
+              <input type="number" name="total" onChange={handleChange} />%{" "}
+            </th>
+          </tr>
         </table>
 
         <table id="total">
           <tr>
-            <th id="firstBody">total Score</th>
-            <th id="body">{totalScore}</th>
+            <th id="firstBody">{selected}</th>
+            <th id="body">{partialScore}</th>
           </tr>
         </table>
       </div>
@@ -105,4 +150,4 @@ const FinalTable = () => {
   );
 };
 
-export default FinalTable;
+export default PartialGradeFinalTable;
