@@ -4,14 +4,9 @@ import P3Component from "./p3Component";
 import Nav from "../NavBar";
 import "../pages/page2.css";
 import { useFinalContext } from "../ElementFunction/Contexts/finalContext";
-import { useState } from "react";
-const Page3 = (props) => {
-  const [showModel, setShowModel] = useState(false);
-  const openModel = () => {
-    setShowModel((prev) => !prev);
-  };
 
-  const Context1 = useFinalContext().gradingComp;
+const Page3 = () => {
+  const Context = useFinalContext().gradingComp;
 
   const navigate = useNavigate();
   const navigatePartialGradeFinalTable = () => {
@@ -19,13 +14,15 @@ const Page3 = (props) => {
   };
 
   return (
-    <div class="pageContainer">
+    <div className="pageContainer">
       <Nav
-        np={"Please select the unknown partial grade wanted to be calculated"}
+        navigationParagraph={
+          "Please select the unknown partial grade wanted to be calculated"
+        }
       />
-      <section class="section">
-        <div class="section-one-container">
-          <P3Component c={Context1} />
+      <section className="section">
+        <div className="section-one-container">
+          <P3Component context={Context} />
 
           <button id="nextButton" onClick={navigatePartialGradeFinalTable}>
             Next

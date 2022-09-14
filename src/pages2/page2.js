@@ -6,13 +6,13 @@ import "../pages/page2.css";
 import { Modal } from "../ElementFunction/AddComponents/Modal";
 import { useFinalContext } from "../ElementFunction/Contexts/finalContext";
 import { useState } from "react";
-const Page22 = (props) => {
+const PartialGradePage2 = () => {
   const [showModel, setShowModel] = useState(false);
+  const Context = useFinalContext().gradingComp;
+
   const openModel = () => {
     setShowModel((prev) => !prev);
   };
-
-  const Context1 = useFinalContext().gradingComp;
 
   const navigate = useNavigate();
   const navigatePage3 = () => {
@@ -21,10 +21,14 @@ const Page22 = (props) => {
 
   return (
     <div className="page2-container">
-      <Nav np={"Please enter the percentages as stated in the syllabus"} />
+      <Nav
+        navigationParagraph={
+          "Please enter the percentages as stated in the syllabus"
+        }
+      />
       <section class="section">
         <div class="section-one-container">
-          <Component c={Context1} />
+          <Component c={Context} />
 
           <div class="component" id="add-column">
             <div>
@@ -39,7 +43,6 @@ const Page22 = (props) => {
           <button id="nextButton" onClick={navigatePage3}>
             Next
           </button>
-          {/* <Modal showModel={showModel} setShowModel={setShowModel} /> */}
         </div>
         <Modal showModel={showModel} setShowModel={setShowModel} />
       </section>
@@ -47,4 +50,4 @@ const Page22 = (props) => {
   );
 };
 
-export default Page22;
+export default PartialGradePage2;

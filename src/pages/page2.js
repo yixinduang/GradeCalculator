@@ -6,13 +6,13 @@ import "./page2.css";
 import { Modal } from "../ElementFunction/AddComponents/Modal";
 import { useFinalContext } from "../ElementFunction/Contexts/finalContext";
 import { useState } from "react";
-const Page2 = (props) => {
+const Page2 = () => {
   const [showModel, setShowModel] = useState(false);
+  const Context = useFinalContext().gradingComp;
+
   const openModel = () => {
     setShowModel((prev) => !prev);
   };
-
-  const Context1 = useFinalContext().gradingComp;
 
   const navigate = useNavigate();
   const navigatePage3 = () => {
@@ -20,18 +20,22 @@ const Page2 = (props) => {
   };
 
   return (
-    <div class="pageContainer">
-      <Nav np={"Please enter the percentages as stated in the syllabus"} />
-      <section class="section">
-        <div class="section-one-container">
-          <Component c={Context1} />
+    <div className="pageContainer">
+      <Nav
+        navigationParagraph={
+          "Please enter the percentages as stated in the syllabus"
+        }
+      />
+      <section className="section">
+        <div className="section-one-container">
+          <Component c={Context} />
 
-          <div class="component" id="add-column">
+          <div className="component" id="add-column">
             <div>
-              <h2 class="component-title">Add</h2>
+              <h2 className="component-title">Add</h2>
               <hr id="line" />
-              <div class="add-column-button" onClick={openModel}>
-                <h1 class="add-icon">+</h1>
+              <div className="add-column-button" onClick={openModel}>
+                <h1 className="add-icon">+</h1>
               </div>
             </div>
           </div>

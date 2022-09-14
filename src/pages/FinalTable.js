@@ -14,12 +14,12 @@ const FinalTable = () => {
 
   React.useEffect(() => {
     for (let j = 0; j < gradingComp.length; j++) {
-      const g = gradingComp[j];
+      const comp = gradingComp[j];
 
-      for (let i = 1; i <= g.number; i++) {
+      for (let i = 1; i <= comp.number; i++) {
         const component = {
-          cname: g.name + i,
-          cpercenatge: Number(g.percentage),
+          name: comp.name + i,
+          percenatge: Number(comp.percentage),
           score: 0,
         };
         componentList.push(component);
@@ -27,41 +27,39 @@ const FinalTable = () => {
     }
   }, []);
 
-  /////////////////
-
   function handleChange(event) {
-    componentList.map((c) => {
-      if (c.cname == event.target.name) {
-        c.score = Number(event.target.value);
+    componentList.map((comp) => {
+      if (comp.name === event.target.name) {
+        comp.score = Number(event.target.value);
       }
     });
 
-    console.log(componentList);
+    GetTotal();
+  }
 
-    //get the sum
-
-    const gradelist = componentList.map((c) => (c.score * c.cpercenatge) / 100);
+  const GetTotal = () => {
+    const gradelist = componentList.map(
+      (comp) => (comp.score * comp.percenatge) / 100
+    );
 
     let sum = gradelist.reduce((acc, comp) => {
-      console.log(comp);
-
       return acc + comp;
     }, 0);
 
     setTotalScore(sum.toFixed(2));
-  }
+  };
 
   const getSelection = (item) => {
     let sectionList = [];
 
     for (let i = 1; i <= item.number; i++) {
-      let n = item.name;
+      let name = item.name;
       sectionList.push(
         <tr id="body">
-          <th id="firstBody">{n.charAt(0) + i}</th>
+          <th id="firstBody">{name.charAt(0) + i}</th>
           <th>{item.percentage + "%"}</th>
           <th>
-            <input type="number" name={n + i} onChange={handleChange} />%{" "}
+            <input type="number" name={name + i} onChange={handleChange} />%{" "}
           </th>
         </tr>
       );
@@ -84,21 +82,25 @@ const FinalTable = () => {
   return (
     <>
       <Nav
-        np={
+        navigationParagraph={
           "Now its time to calucate your grade! enter how much you have earned out of the total below."
         }
       />
 
       <div id="paper">
         <table>
-          <>{sectionContent}</>
+          <tbody>
+            <>{sectionContent}</>
+          </tbody>
         </table>
 
         <table id="total">
-          <tr>
-            <th id="firstBody">total Score</th>
-            <th id="body">{totalScore}</th>
-          </tr>
+          <tbody>
+            <tr>
+              <th id="firstBody">total Score</th>
+              <th id="body">{totalScore}</th>
+            </tr>
+          </tbody>
         </table>
       </div>
     </>

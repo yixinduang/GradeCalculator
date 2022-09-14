@@ -1,60 +1,52 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Page1=(props)=>{
-    const navigate = useNavigate();
+const Page1 = () => {
+  const navigate = useNavigate();
   const navigatePage2 = () => {
-    navigate('/page2');
+    navigate("/page2");
   };
 
-  const navigatePage22 = () => {
-    navigate('/page22');
+  const navigatePartialPage2 = () => {
+    navigate("/partialGradepage2");
   };
 
   return (
     <div className="App">
-
       <header>
-        <img id="image" src="./icon.png" />
+        <img id="image" src="./icon.png" alt="icon" />
         <h1>Welcom to GradeCalculator!</h1>
       </header>
-      <p1 id="hint">To begain, please select an option from below.</p1>
+      <div id="hint">To begain, please select an option from below.</div>
 
-      <div class="main">
-        <section class="exp">
+      <div className="main">
+        <section className="exp">
           <h2>Cummulative Grade</h2>
           <hr id="line" />
           <div>
-            <p1 >
-              I want to know how much I earned so far.
-            </p1>
+            <div>I want to know how much I earned so far.</div>
           </div>
-          <img class="aci" src="./acc1.png" />
-          <botton onClick={navigatePage2}>select</botton>
-
-
-
-          
-
+          <img className="aci" src="./acc1.png" alt="accumulative" />
+          <button className="botton" onClick={navigatePage2}>
+            select
+          </button>
         </section>
-        <section class="exp">
+        <section className="exp">
           <h2>Partial Grade</h2>
-          <hr id="line"/>
+          <hr id="line" />
+          <div>
             <div>
-              <p1>
-                I know my final grade just want to calculate one unknown subject.
-              </p1>
+              I know my final grade just want to calculate one unknown subject.
             </div>
-            <img class="aci" src="./acc2.png" />
-            <botton onClick={navigatePage22}>select</botton>
+          </div>
+          <img className="aci" src="./acc2.png" alt="partial" />
+          <button className="botton" onClick={navigatePartialPage2}>
+            select
+          </button>
         </section>
-
       </div>
-
     </div>
-
   );
-}
-
+};
 
 export default Page1;
